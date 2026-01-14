@@ -135,5 +135,22 @@ select * from products limit 10;
 -- Preview sale orders for products purchsaed online by various customers
 select * from orders limit 10;
 
--- Successful completeion message
-select 'Congratulations! Snowflake Data Engineering workshop setup has completed successfully!' as status;
+-- Summary of created objects (run this to verify setup)
+with checks as (
+    select
+        iff(current_database() = 'RAW_DB', 1, 0) as db_ok,
+        (select iff(count(*) > 0, 1, 0) from raw_db.public.customers) as customers_ok,
+        (select iff(count(*) > 0, 1, 0) from raw_db.public.products) as products_ok,
+        (select iff(count(*) > 0, 1, 0) from raw_db.public.orders) as orders_ok
+),
+summary as (
+    select
+        db_ok + customers_ok + products_ok + orders_ok as passed,
+        4 as total
+    from checks
+)
+select case
+    when passed = total then '✓ ' || passed || '/' || total || ' checks passed. Setup successful!'
+    else '✗ ' || passed || '/' || total || ' checks passed. Setup incomplete - please click "Run All" to execute the entire script.'
+end as status
+from summary;

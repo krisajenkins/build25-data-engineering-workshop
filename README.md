@@ -1,6 +1,6 @@
-# Build 2025 — Snowflake Data Engineering Workshop
+# Build 2026 — Snowflake Data Engineering Workshop
 
-Welcome to the Data Engineering Workshop for Snowflake Build 2025! This repository contains setup scripts and reference materials to help you get started with data engineering concepts using Snowflake.
+Welcome to the Data Engineering Workshop for Snowflake Build 2026! This repository contains setup scripts and reference materials to help you get started with data engineering concepts using Snowflake.
 
 
 ## What’s here

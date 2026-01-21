@@ -3,7 +3,7 @@ use role accountadmin;
 
 -- Createing a warehouse to store our data and perfrom computations
 create warehouse if not exists compute_wh
-with warehouse_size = 'large'
+with warehouse_size = 'x-small'
 auto_suspend = 300
 auto_resume = true;
 
